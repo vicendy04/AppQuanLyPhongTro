@@ -17,7 +17,10 @@ namespace QuanLyPhongTro
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-
+            QuanLyNguoiThue quanLyNguoiThue = new QuanLyNguoiThue();
+            this.Hide();
+            quanLyNguoiThue.ShowDialog();
+            this.Show();
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -27,7 +30,10 @@ namespace QuanLyPhongTro
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-
+            QuanLyThietBi quanLyThietBi = new QuanLyThietBi();
+            this.Hide();
+            quanLyThietBi.ShowDialog();
+            this.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
