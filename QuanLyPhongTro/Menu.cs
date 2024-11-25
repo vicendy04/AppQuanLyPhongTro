@@ -40,5 +40,21 @@ namespace QuanLyPhongTro
         {
 
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            QuanLyPhong quanLyPhong = new QuanLyPhong();
+            this.Hide();
+            quanLyPhong.ShowDialog();
+            this.Show();
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            QuanLyHopDong quanLyHopDong = new QuanLyHopDong();
+            this.Hide();
+            quanLyHopDong.ShowDialog();
+            this.Show();
+        }
     }
 }
