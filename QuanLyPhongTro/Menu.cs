@@ -56,5 +56,13 @@ namespace QuanLyPhongTro
             quanLyHopDong.ShowDialog();
             this.Show();
         }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            QuanLyHoaDon quanLyHoaDon = new QuanLyHoaDon();
+            this.Hide();
+            quanLyHoaDon.ShowDialog();
+            this.Show();
+        }
     }
 }
