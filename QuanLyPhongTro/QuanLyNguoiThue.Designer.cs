@@ -216,12 +216,13 @@
             // 
             // dgvNguoiThue
             // 
+            this.dgvNguoiThue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvNguoiThue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNguoiThue.Location = new System.Drawing.Point(16, 34);
+            this.dgvNguoiThue.Location = new System.Drawing.Point(3, 19);
             this.dgvNguoiThue.Name = "dgvNguoiThue";
             this.dgvNguoiThue.RowHeadersWidth = 51;
             this.dgvNguoiThue.RowTemplate.Height = 24;
-            this.dgvNguoiThue.Size = new System.Drawing.Size(851, 257);
+            this.dgvNguoiThue.Size = new System.Drawing.Size(879, 284);
             this.dgvNguoiThue.TabIndex = 3;
             this.dgvNguoiThue.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiThue_CellClick);
             // 
@@ -342,6 +343,7 @@
             // 
             this.txbIdNguoiThue.Location = new System.Drawing.Point(168, 33);
             this.txbIdNguoiThue.Name = "txbIdNguoiThue";
+            this.txbIdNguoiThue.ReadOnly = true;
             this.txbIdNguoiThue.Size = new System.Drawing.Size(252, 23);
             this.txbIdNguoiThue.TabIndex = 6;
             // 
