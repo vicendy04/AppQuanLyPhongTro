@@ -106,6 +106,7 @@
     <Compile Include="QuanLyThietBi.Designer.cs">
       <DependentUpon>QuanLyThietBi.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaoXML.cs" />
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
