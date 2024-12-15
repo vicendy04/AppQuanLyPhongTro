@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuanLyPhongTro
 {
@@ -143,6 +144,21 @@ namespace QuanLyPhongTro
                 dtpkNgaySinh.Value = Convert.ToDateTime(row.Cells["NgaySinh"].Value);
                 txbQueQuan.Text = row.Cells["QueQuan"].Value.ToString();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txbIdNguoiThue.Text = string.Empty;
+            txbHoTen.Text = string.Empty;
+            txbSDT.Text = string.Empty;
+            txbCCCD.Text = string.Empty;
+            txbQueQuan.Text = string.Empty;
+
+            // Đặt giá trị DateTimePicker về ngày hiện tại
+            dtpkNgaySinh.Value = DateTime.Now;
+
+            // Hiển thị thông báo (nếu cần)
+            MessageBox.Show("Đã đặt lại dữ liệu nhập!");
         }
     }
 }

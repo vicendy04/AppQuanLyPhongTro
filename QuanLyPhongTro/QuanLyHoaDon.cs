@@ -15,7 +15,7 @@ namespace QuanLyPhongTro
 {
     public partial class QuanLyHoaDon : QuanLyPhongTro.Form1
     {
-        string strCon = "Data Source=DESKTOP-26K2NEP;Initial Catalog=QuanLyPhongTro;User Id=sa;Password=123456;";
+        string strCon = "Server=DESKTOP-B0P3AUF\\COMPUTER1;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
 
         public QuanLyHoaDon()
         {
@@ -417,6 +417,11 @@ namespace QuanLyPhongTro
             // Cập nhật lại DataGridView
             DataTable dt = loadDataGridView(filePath);
             dataGridView1.DataSource = dt;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

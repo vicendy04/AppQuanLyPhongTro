@@ -139,5 +139,18 @@ namespace QuanLyPhongTro
                 cbbIdPhong.SelectedValue = row.Cells["IdPhong"].Value.ToString();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txbIdThietBi.Text = string.Empty;
+            txbTenThietBi.Text = string.Empty;
+            // Hiển thị thông báo (nếu cần)
+            MessageBox.Show("Đã đặt lại dữ liệu nhập!");
+        }
+
+        private void QuanLyThietBi_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
