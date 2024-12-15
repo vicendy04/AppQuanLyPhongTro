@@ -15,7 +15,7 @@ namespace QuanLyPhongTro
 {
     public partial class QuanLyHoaDon : QuanLyPhongTro.Form1
     {
-        string strCon = "Server=DESKTOP-B0P3AUF\\COMPUTER1;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
+        string strCon = "Server=DESKTOP-1O7UCNA;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
 
         public QuanLyHoaDon()
         {

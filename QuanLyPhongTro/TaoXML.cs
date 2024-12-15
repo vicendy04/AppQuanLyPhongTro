@@ -12,7 +12,7 @@ namespace QuanLyPhongTro
 {
     class TaoXML
     {
-        string strCon = @"Server=DESKTOP-B0P3AUF\COMPUTER1;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
+        string strCon = @"Server=DESKTOP-1O7UCNA;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
         public void taoXML(string sql, string bang, string _FileXML)
         {
             SqlConnection con = new SqlConnection(strCon);
