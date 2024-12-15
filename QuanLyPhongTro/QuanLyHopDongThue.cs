@@ -1,30 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyPhongTro
 {
-    public partial class QuanLyHopDong : Form
+    public partial class QuanLyHopDongThue : Form
     {
         TaoXML taoXML = new TaoXML();
-        string fileXML = "\\HopDong.xml";
-
-        public QuanLyHopDong()
+        string fileXML = "\\HopDongThue.xml";
+        public QuanLyHopDongThue()
         {
             InitializeComponent();
         }
-
-        private void QuanLyHopDong_Load(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-
         void LoadData()
         {
             string sql = "select * from HopDongThue";
-            taoXML.taoXML(sql, "HopDongThue", fileXML);
-            dgvHopDong.DataSource = taoXML.loadDataGridView(fileXML);
+            taoXML.taoXML(sql,"HopDongThue", fileXML);
+            dgvHopDongThue.DataSource = taoXML.loadDataGridView(fileXML);
         }
 
+        private void QuanLyHopDongThue_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
         void ResetFields()
         {
             tb_IdHopDong.Text = "";
@@ -66,23 +70,6 @@ namespace QuanLyPhongTro
             }
         }
 
-        private void dgvHopDong_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvHopDong.Rows[e.RowIndex];
-                tb_IdHopDong.Text = row.Cells["IdHopDong"].Value.ToString();
-                tb_NguoiThue.Text = row.Cells["IdNguoiThue"].Value.ToString();
-                tb_Phong.Text = row.Cells["IdPhong"].Value.ToString();
-                dateTimePicker1.Value = Convert.ToDateTime(row.Cells["NgayKetThucThue"].Value);
-                datetimeNgayThue.Value = Convert.ToDateTime(row.Cells["NgayThue"].Value);
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         private void btt_sua_Click(object sender, EventArgs e)
         {
             try
@@ -142,9 +129,22 @@ namespace QuanLyPhongTro
             }
         }
 
-        private void QuanLyHopDong_Load_1(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void dgvHopDongThue_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvHopDongThue.Rows[e.RowIndex];
+                tb_IdHopDong.Text = row.Cells["IdHopDong"].Value.ToString();
+                tb_NguoiThue.Text = row.Cells["IdNguoiThue"].Value.ToString();
+                tb_Phong.Text = row.Cells["IdPhong"].Value.ToString();
+                dateTimePicker1.Value = Convert.ToDateTime(row.Cells["NgayKetThucThue"].Value);
+                datetimeNgayThue.Value = Convert.ToDateTime(row.Cells["NgayThue"].Value);
+            }
         }
     }
 }

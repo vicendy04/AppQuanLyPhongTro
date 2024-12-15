@@ -51,9 +51,11 @@ namespace QuanLyPhongTro
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            QuanLyHopDong quanLyHopDong = new QuanLyHopDong();
+            QuanLyHopDongThue quanLyHopDongThue = new QuanLyHopDongThue();
+            //QuanLyHopDong quanLyHopDong = new QuanLyHopDong();
             this.Hide();
-            quanLyHopDong.ShowDialog();
+            quanLyHopDongThue.ShowDialog();
+            //quanLyHopDong.ShowDialog();
             this.Show();
         }
 
