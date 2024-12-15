@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXuat = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvNguoiThue = new System.Windows.Forms.DataGridView();
@@ -62,7 +64,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -183,6 +184,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnXuat);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.groupBox3);
@@ -194,6 +196,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(914, 670);
             this.panel1.TabIndex = 23;
+            // 
+            // btnXuat
+            // 
+            this.btnXuat.Location = new System.Drawing.Point(644, 7);
+            this.btnXuat.Name = "btnXuat";
+            this.btnXuat.Size = new System.Drawing.Size(114, 37);
+            this.btnXuat.TabIndex = 17;
+            this.btnXuat.Text = "Xuất html";
+            this.btnXuat.UseVisualStyleBackColor = true;
+            this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(785, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 37);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Làm mới";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label13
             // 
@@ -419,16 +441,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Quản Lý Người Thuê";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(760, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 32);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Làm mới";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // QuanLyNguoiThue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -501,5 +513,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dtpkNgaySinh;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnXuat;
     }
 }

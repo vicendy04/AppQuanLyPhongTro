@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml.Xsl;
+using System.Xml;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuanLyPhongTro
@@ -159,6 +162,51 @@ namespace QuanLyPhongTro
 
             // Hiển thị thông báo (nếu cần)
             MessageBox.Show("Đã đặt lại dữ liệu nhập!");
+        }
+
+        private void btnXuat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Tạo SaveFileDialog để chọn nơi lưu file
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "HTML files (*.html)|*.html",
+                    FilterIndex = 1,
+                    RestoreDirectory = true,
+                    FileName = "DanhSachNguoiThue.html"
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string xmlPath = Application.StartupPath + fileXML;
+                    string xsltPath = Application.StartupPath + "\\XuatNguoiThue.xslt";
+
+                    // Tạo XslCompiledTransform
+                    XslCompiledTransform xslt = new XslCompiledTransform();
+                    xslt.Load(xsltPath);
+
+                    // Thực hiện transform
+                    using (XmlReader reader = XmlReader.Create(xmlPath))
+                    {
+                        using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                        {
+                            xslt.Transform(reader, null, writer);
+                        }
+                    }
+
+                    MessageBox.Show("Xuất danh sách thành công!", "Thông báo",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Mở file sau khi xuất
+                    System.Diagnostics.Process.Start(saveFileDialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xuất danh sách: " + ex.Message, "Lỗi",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
