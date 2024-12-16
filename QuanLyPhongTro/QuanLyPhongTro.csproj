@@ -166,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\HoaDon.xml" />
+    <Content Include="bin\Debug\HopDongThue.xml" />
     <Content Include="bin\Debug\NguoiThueTro.xml" />
     <Content Include="bin\Debug\Phong.xml" />
     <Content Include="bin\Debug\QuanLyPhongTro.exe" />
@@ -173,6 +174,8 @@
     <Content Include="bin\Debug\System.Configuration.ConfigurationManager.dll" />
     <Content Include="bin\Debug\System.Configuration.ConfigurationManager.xml" />
     <Content Include="bin\Debug\ThietBi.xml" />
+    <Content Include="bin\Debug\XuatHopDong.xslt" />
+    <Content Include="bin\Debug\XuatPhong.xslt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
