@@ -56,6 +56,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnXuat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -119,9 +120,9 @@
             this.groupBox2.Controls.Add(this.btnXoa);
             this.groupBox2.Controls.Add(this.btnSua);
             this.groupBox2.Controls.Add(this.btnThem);
-            this.groupBox2.Location = new System.Drawing.Point(456, 49);
+            this.groupBox2.Location = new System.Drawing.Point(471, 49);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(474, 190);
+            this.groupBox2.Size = new System.Drawing.Size(459, 190);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thao tác";
@@ -141,7 +142,7 @@
             // 
             this.txbTenThietBi.Location = new System.Drawing.Point(150, 89);
             this.txbTenThietBi.Name = "txbTenThietBi";
-            this.txbTenThietBi.Size = new System.Drawing.Size(252, 23);
+            this.txbTenThietBi.Size = new System.Drawing.Size(271, 23);
             this.txbTenThietBi.TabIndex = 8;
             // 
             // txbIdThietBi
@@ -149,7 +150,7 @@
             this.txbIdThietBi.Location = new System.Drawing.Point(150, 35);
             this.txbIdThietBi.Name = "txbIdThietBi";
             this.txbIdThietBi.ReadOnly = true;
-            this.txbIdThietBi.Size = new System.Drawing.Size(252, 23);
+            this.txbIdThietBi.Size = new System.Drawing.Size(271, 23);
             this.txbIdThietBi.TabIndex = 6;
             // 
             // label11
@@ -192,7 +193,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Location = new System.Drawing.Point(13, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(428, 190);
+            this.groupBox1.Size = new System.Drawing.Size(452, 190);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
@@ -202,14 +203,14 @@
             this.cbbIdPhong.FormattingEnabled = true;
             this.cbbIdPhong.Location = new System.Drawing.Point(150, 140);
             this.cbbIdPhong.Name = "cbbIdPhong";
-            this.cbbIdPhong.Size = new System.Drawing.Size(252, 25);
+            this.cbbIdPhong.Size = new System.Drawing.Size(271, 25);
             this.cbbIdPhong.TabIndex = 9;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(338, 14);
+            this.label6.Location = new System.Drawing.Point(370, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(225, 32);
             this.label6.TabIndex = 0;
@@ -218,6 +219,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnXuat);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
@@ -231,7 +233,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(793, 4);
+            this.button1.Location = new System.Drawing.Point(814, 6);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 42);
             this.button1.TabIndex = 5;
@@ -354,6 +356,16 @@
             this.label5.TabIndex = 33;
             this.label5.Text = "Quản lý hợp đồng";
             // 
+            // btnXuat
+            // 
+            this.btnXuat.Location = new System.Drawing.Point(682, 6);
+            this.btnXuat.Name = "btnXuat";
+            this.btnXuat.Size = new System.Drawing.Size(99, 42);
+            this.btnXuat.TabIndex = 35;
+            this.btnXuat.Text = "Xuất html";
+            this.btnXuat.UseVisualStyleBackColor = true;
+            this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
+            // 
             // QuanLyThietBi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -419,5 +431,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cbbIdPhong;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnXuat;
     }
 }
