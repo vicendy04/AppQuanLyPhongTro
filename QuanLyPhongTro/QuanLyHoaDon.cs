@@ -9,13 +9,14 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Xsl;
 using static System.Windows.Forms.LinkLabel;
 
 namespace QuanLyPhongTro
 {
     public partial class QuanLyHoaDon : QuanLyPhongTro.Form1
     {
-        string strCon = "Server=DESKTOP-1O7UCNA;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
+        string strCon = "Server=DESKTOP-26K2NEP;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
 
         public QuanLyHoaDon()
         {
@@ -75,11 +76,35 @@ namespace QuanLyPhongTro
                 dataGridView1.Columns["IdHoaDon"].ReadOnly = true; // Đảm bảo tên cột trùng khớp
             }
             textBoxId.Enabled = false;
-            //textBoxId.ReadOnly = true;
+
+            // Điền dữ liệu vào ComboBox từ bảng Phong
+            DataTable dsPhong = GetDanhSachPhong();
+            comboBoxPhong.DataSource = dsPhong; // ComboBox bạn đặt trên giao diện
+            comboBoxPhong.DisplayMember = "TenPhong"; // Tên phòng hiển thị
+            comboBoxPhong.ValueMember = "IdPhong";    // Giá trị là Id phòng
 
             // Đăng ký sự kiện CellClick
             dataGridView1.CellClick += dataGridView1_CellContentClick;
         }
+
+
+
+        private DataTable GetDanhSachPhong()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(strCon))
+            {
+                con.Open();
+                string sql = "SELECT IdPhong, TenPhong FROM Phong"; // Lấy Id và Tên phòng
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sql, con))
+                {
+                    adapter.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -90,7 +115,7 @@ namespace QuanLyPhongTro
 
                 // Đưa dữ liệu từ các cột lên TextBox
                 textBoxId.Text = row.Cells["IdHoaDon"].Value?.ToString();
-                textBoxPhong.Text = row.Cells["IdPhong"].Value?.ToString();
+                comboBoxPhong.SelectedValue = row.Cells["IdPhong"].Value?.ToString(); // Thiết lập giá trị của ComboBox
                 textBoxSoDien.Text = row.Cells["ChuSoDien"].Value?.ToString();
                 textBoxMetKhoi.Text = row.Cells["MetKhoi"].Value?.ToString();
                 dateTimePicker.Value = Convert.ToDateTime(row.Cells["TuNgay"].Value);
@@ -143,7 +168,7 @@ namespace QuanLyPhongTro
         private void btnThem_Click(object sender, EventArgs e)
         {
             textBoxId.Text = string.Empty;
-            textBoxPhong.Text = string.Empty;
+            comboBoxPhong.SelectedIndex = -1;
             textBoxSoDien.Text = string.Empty;
             textBoxMetKhoi.Text = string.Empty;
 
@@ -159,7 +184,8 @@ namespace QuanLyPhongTro
         private void btnLuu_Click(object sender, EventArgs e)
         {
             // Lấy dữ liệu từ các TextBox và DateTimePicker
-            string phong = textBoxPhong.Text.Trim();
+            //string phong = textBoxPhong.Text.Trim();
+            string phong = comboBoxPhong.SelectedValue.ToString();
             string soDien = textBoxSoDien.Text.Trim();
             string metKhoi = textBoxMetKhoi.Text.Trim();
             string ngayBatDau = dateTimePicker.Value.ToString("yyyy-MM-dd");
@@ -277,7 +303,8 @@ namespace QuanLyPhongTro
         {
             // Lấy dữ liệu từ các TextBox và DateTimePicker
             string idHoaDon = textBoxId.Text.Trim();
-            string phong = textBoxPhong.Text.Trim();
+            //string phong = textBoxPhong.Text.Trim();
+            string phong = comboBoxPhong.SelectedValue.ToString();
             string soDien = textBoxSoDien.Text.Trim();
             string metKhoi = textBoxMetKhoi.Text.Trim();
             string ngayBatDau = dateTimePicker.Value.ToString("yyyy-MM-dd");
@@ -423,5 +450,64 @@ namespace QuanLyPhongTro
         {
             this.Close();
         }
+
+        private void btnHTML_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Hộp thoại lưu file
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "HTML files (*.html)|*.html",
+                    FilterIndex = 1,
+                    RestoreDirectory = true,
+                    FileName = "DanhSachHoaDon.html" // Tên file mặc định
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Đường dẫn file XML và XSL
+                    string xmlPath = Application.StartupPath + "\\HoaDon.xml";
+                    string xsltPath = Application.StartupPath + "\\HoaDon.xsl";
+
+                    // Kiểm tra tệp XML và XSL có tồn tại không
+                    if (!File.Exists(xmlPath))
+                    {
+                        MessageBox.Show("File XML không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (!File.Exists(xsltPath))
+                    {
+                        MessageBox.Show("File XSL không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Tạo XslCompiledTransform để thực hiện chuyển đổi
+                    XslCompiledTransform xslt = new XslCompiledTransform();
+                    xslt.Load(xsltPath); // Nạp file XSL
+
+                    // Chuyển đổi từ XML sang HTML và lưu tại đường dẫn được chọn
+                    using (XmlReader reader = XmlReader.Create(xmlPath))
+                    {
+                        using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                        {
+                            xslt.Transform(reader, null, writer);
+                        }
+                    }
+
+                    MessageBox.Show("Xuất danh sách hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Mở file HTML sau khi xuất
+                    System.Diagnostics.Process.Start(saveFileDialog.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xuất danh sách hóa đơn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
     }
 }

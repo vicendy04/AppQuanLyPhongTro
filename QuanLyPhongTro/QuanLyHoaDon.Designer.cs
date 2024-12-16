@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyHoaDon));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHTML = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -45,7 +46,6 @@
             this.textBoxSoDien = new System.Windows.Forms.TextBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBoxPhong = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.comboBoxPhong = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -78,6 +79,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnHTML);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.label13);
@@ -88,6 +90,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(915, 642);
             this.panel1.TabIndex = 42;
+            // 
+            // btnHTML
+            // 
+            this.btnHTML.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHTML.Location = new System.Drawing.Point(624, 17);
+            this.btnHTML.Name = "btnHTML";
+            this.btnHTML.Size = new System.Drawing.Size(122, 33);
+            this.btnHTML.TabIndex = 29;
+            this.btnHTML.Text = "Xuất HTML";
+            this.btnHTML.UseVisualStyleBackColor = true;
+            this.btnHTML.Click += new System.EventHandler(this.btnHTML_Click);
             // 
             // btnThem
             // 
@@ -190,12 +203,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBoxPhong);
             this.groupBox1.Controls.Add(this.textBoxMetKhoi);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.textBoxSoDien);
             this.groupBox1.Controls.Add(this.dateTimePicker);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.textBoxPhong);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -252,14 +265,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(252, 30);
             this.dateTimePicker1.TabIndex = 28;
-            // 
-            // textBoxPhong
-            // 
-            this.textBoxPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPhong.Location = new System.Drawing.Point(163, 93);
-            this.textBoxPhong.Name = "textBoxPhong";
-            this.textBoxPhong.Size = new System.Drawing.Size(252, 30);
-            this.textBoxPhong.TabIndex = 24;
             // 
             // label11
             // 
@@ -434,6 +439,15 @@
             this.pictureBox2.TabIndex = 36;
             this.pictureBox2.TabStop = false;
             // 
+            // comboBoxPhong
+            // 
+            this.comboBoxPhong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxPhong.FormattingEnabled = true;
+            this.comboBoxPhong.Location = new System.Drawing.Point(163, 91);
+            this.comboBoxPhong.Name = "comboBoxPhong";
+            this.comboBoxPhong.Size = new System.Drawing.Size(252, 33);
+            this.comboBoxPhong.TabIndex = 33;
+            // 
             // QuanLyHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -480,7 +494,6 @@
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBoxPhong;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -503,5 +516,7 @@
         private System.Windows.Forms.TextBox textBoxMetKhoi;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnHTML;
+        private System.Windows.Forms.ComboBox comboBoxPhong;
     }
 }
