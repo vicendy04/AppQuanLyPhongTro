@@ -16,7 +16,7 @@ namespace QuanLyPhongTro
 {
     public partial class QuanLyHoaDon : QuanLyPhongTro.Form1
     {
-        string strCon = "Data Source=DESKTOP-26K2NEP;Initial Catalog=QuanLyPhongTro;User Id=sa;Password=123456;";
+        string strCon = "Server=DESKTOP-26K2NEP;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
 
         public QuanLyHoaDon()
         {

@@ -88,6 +88,12 @@
     <Compile Include="QuanLyHopDong.Designer.cs">
       <DependentUpon>QuanLyHopDong.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyHopDongThue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyHopDongThue.Designer.cs">
+      <DependentUpon>QuanLyHopDongThue.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyNguoiThue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,7 @@
     <Compile Include="QuanLyThietBi.Designer.cs">
       <DependentUpon>QuanLyThietBi.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaoXML.cs" />
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +137,9 @@
     <EmbeddedResource Include="QuanLyHopDong.resx">
       <DependentUpon>QuanLyHopDong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyHopDongThue.resx">
+      <DependentUpon>QuanLyHopDongThue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNguoiThue.resx">
       <DependentUpon>QuanLyNguoiThue.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +149,7 @@
     <EmbeddedResource Include="QuanLyThietBi.resx">
       <DependentUpon>QuanLyThietBi.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\QuanLyPhongTro.exe.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -152,6 +163,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\HoaDon.xml" />
+    <Content Include="bin\Debug\NguoiThueTro.xml" />
+    <Content Include="bin\Debug\Phong.xml" />
+    <Content Include="bin\Debug\QuanLyPhongTro.exe" />
+    <Content Include="bin\Debug\QuanLyPhongTro.pdb" />
+    <Content Include="bin\Debug\System.Configuration.ConfigurationManager.dll" />
+    <Content Include="bin\Debug\System.Configuration.ConfigurationManager.xml" />
+    <Content Include="bin\Debug\ThietBi.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
