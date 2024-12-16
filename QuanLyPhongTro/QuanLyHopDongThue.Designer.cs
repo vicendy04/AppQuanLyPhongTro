@@ -60,6 +60,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHopDongThue)).BeginInit();
@@ -138,6 +139,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btt_xoa);
             this.groupBox2.Controls.Add(this.btt_sua);
             this.groupBox2.Controls.Add(this.button4);
@@ -152,7 +154,7 @@
             // btt_xoa
             // 
             this.btt_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_xoa.Location = new System.Drawing.Point(533, 33);
+            this.btt_xoa.Location = new System.Drawing.Point(573, 33);
             this.btt_xoa.Name = "btt_xoa";
             this.btt_xoa.Size = new System.Drawing.Size(111, 46);
             this.btt_xoa.TabIndex = 29;
@@ -163,7 +165,7 @@
             // btt_sua
             // 
             this.btt_sua.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_sua.Location = new System.Drawing.Point(259, 33);
+            this.btt_sua.Location = new System.Drawing.Point(228, 32);
             this.btt_sua.Name = "btt_sua";
             this.btt_sua.Size = new System.Drawing.Size(111, 46);
             this.btt_sua.TabIndex = 28;
@@ -400,6 +402,17 @@
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(390, 33);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 46);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "Xuất Html";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // QuanLyHopDongThue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -469,5 +482,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
