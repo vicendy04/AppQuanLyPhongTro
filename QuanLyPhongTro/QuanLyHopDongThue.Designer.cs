@@ -36,14 +36,13 @@
             this.dgvHopDongThue = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btt_xoa = new System.Windows.Forms.Button();
             this.btt_sua = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btt_them = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.tb_NguoiThue = new System.Windows.Forms.TextBox();
-            this.tb_Phong = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -60,7 +59,9 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.tb_Phong = new System.Windows.Forms.TextBox();
+            this.tb_NguoiThue = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHopDongThue)).BeginInit();
@@ -95,6 +96,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.groupBox2);
@@ -150,6 +152,17 @@
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thao tác";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(390, 33);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 46);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "Xuất Html";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btt_xoa
             // 
@@ -222,22 +235,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(252, 30);
             this.dateTimePicker1.TabIndex = 28;
-            // 
-            // tb_NguoiThue
-            // 
-            this.tb_NguoiThue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_NguoiThue.Location = new System.Drawing.Point(630, 31);
-            this.tb_NguoiThue.Name = "tb_NguoiThue";
-            this.tb_NguoiThue.Size = new System.Drawing.Size(252, 30);
-            this.tb_NguoiThue.TabIndex = 25;
-            // 
-            // tb_Phong
-            // 
-            this.tb_Phong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Phong.Location = new System.Drawing.Point(163, 93);
-            this.tb_Phong.Name = "tb_Phong";
-            this.tb_Phong.Size = new System.Drawing.Size(252, 30);
-            this.tb_Phong.TabIndex = 24;
             // 
             // label11
             // 
@@ -402,16 +399,32 @@
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // button2
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(390, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 46);
-            this.button1.TabIndex = 43;
-            this.button1.Text = "Xuất Html";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(729, 7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(126, 46);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Làm mới";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // tb_Phong
+            // 
+            this.tb_Phong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Phong.Location = new System.Drawing.Point(163, 93);
+            this.tb_Phong.Name = "tb_Phong";
+            this.tb_Phong.Size = new System.Drawing.Size(252, 30);
+            this.tb_Phong.TabIndex = 24;
+            // 
+            // tb_NguoiThue
+            // 
+            this.tb_NguoiThue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_NguoiThue.Location = new System.Drawing.Point(630, 31);
+            this.tb_NguoiThue.Name = "tb_NguoiThue";
+            this.tb_NguoiThue.Size = new System.Drawing.Size(252, 30);
+            this.tb_NguoiThue.TabIndex = 25;
             // 
             // QuanLyHopDongThue
             // 
@@ -464,8 +477,6 @@
         private System.Windows.Forms.Button btt_them;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox tb_NguoiThue;
-        private System.Windows.Forms.TextBox tb_Phong;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -483,5 +494,8 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox tb_NguoiThue;
+        private System.Windows.Forms.TextBox tb_Phong;
     }
 }
