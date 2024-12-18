@@ -60,8 +60,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.tb_Phong = new System.Windows.Forms.TextBox();
-            this.tb_NguoiThue = new System.Windows.Forms.TextBox();
+            this.cb_nguoithue = new System.Windows.Forms.ComboBox();
+            this.cb_phong = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHopDongThue)).BeginInit();
@@ -210,10 +210,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cb_phong);
+            this.groupBox1.Controls.Add(this.cb_nguoithue);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.datetimeNgayThue);
-            this.groupBox1.Controls.Add(this.tb_NguoiThue);
-            this.groupBox1.Controls.Add(this.tb_Phong);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -410,21 +410,23 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // tb_Phong
+            // cb_nguoithue
             // 
-            this.tb_Phong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Phong.Location = new System.Drawing.Point(163, 93);
-            this.tb_Phong.Name = "tb_Phong";
-            this.tb_Phong.Size = new System.Drawing.Size(252, 30);
-            this.tb_Phong.TabIndex = 24;
+            this.cb_nguoithue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_nguoithue.FormattingEnabled = true;
+            this.cb_nguoithue.Location = new System.Drawing.Point(630, 34);
+            this.cb_nguoithue.Name = "cb_nguoithue";
+            this.cb_nguoithue.Size = new System.Drawing.Size(252, 33);
+            this.cb_nguoithue.TabIndex = 29;
             // 
-            // tb_NguoiThue
+            // cb_phong
             // 
-            this.tb_NguoiThue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_NguoiThue.Location = new System.Drawing.Point(630, 31);
-            this.tb_NguoiThue.Name = "tb_NguoiThue";
-            this.tb_NguoiThue.Size = new System.Drawing.Size(252, 30);
-            this.tb_NguoiThue.TabIndex = 25;
+            this.cb_phong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_phong.FormattingEnabled = true;
+            this.cb_phong.Location = new System.Drawing.Point(163, 88);
+            this.cb_phong.Name = "cb_phong";
+            this.cb_phong.Size = new System.Drawing.Size(252, 33);
+            this.cb_phong.TabIndex = 30;
             // 
             // QuanLyHopDongThue
             // 
@@ -495,7 +497,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox tb_NguoiThue;
-        private System.Windows.Forms.TextBox tb_Phong;
+        private System.Windows.Forms.ComboBox cb_phong;
+        private System.Windows.Forms.ComboBox cb_nguoithue;
     }
 }

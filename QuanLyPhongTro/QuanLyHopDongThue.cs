@@ -21,6 +21,8 @@ namespace QuanLyPhongTro
         private void QuanLyHopDongThue_Load(object sender, EventArgs e)
         {
             LoadData();
+            LoadComboBoxNguoiThue();
+            LoadComboBoxPhong();
         }
         void LoadData()
         {
@@ -57,11 +59,59 @@ namespace QuanLyPhongTro
             }
             return dt;
         }
+        private void LoadComboBoxNguoiThue()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(strCon))
+                {
+                    con.Open();
+                    string sql = "SELECT IdNguoiThue, HoTen FROM NguoiThueTro";
+                    SqlDataAdapter ad = new SqlDataAdapter(sql, con);
+                    DataTable dt = new DataTable();
+                    ad.Fill(dt);
+
+                    // Gán dữ liệu vào cb_nguoithue
+                    cb_nguoithue.DataSource = dt;
+                    cb_nguoithue.DisplayMember = "IdNguoiThue";  // Hiển thị tên người thuê
+                    cb_nguoithue.ValueMember = "IdNguoiThue";    // Lấy giá trị là IdNguoiThue
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load dữ liệu người thuê: " + ex.Message);
+            }
+        }
+
+        private void LoadComboBoxPhong()
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(strCon))
+                {
+                    con.Open();
+                    string sql = "SELECT IdPhong, TenPhong FROM Phong";
+                    SqlDataAdapter ad = new SqlDataAdapter(sql, con);
+                    DataTable dt = new DataTable();
+                    ad.Fill(dt);
+
+                    // Gán dữ liệu vào cb_phong
+                    cb_phong.DataSource = dt;
+                    cb_phong.DisplayMember = "IdPhong";  // Hiển thị tên phòng
+                    cb_phong.ValueMember = "IdPhong";    // Lấy giá trị là IdPhong
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load dữ liệu phòng: " + ex.Message);
+            }
+        }
+
         void ResetFields()
         {
             tb_IdHopDong.Text = "";
-            tb_NguoiThue.Text = "";
-            tb_Phong.Text = "";
+            cb_nguoithue.Text = "";
+            cb_phong.Text = "";
             dateTimePicker1.Value = DateTime.Now;
             datetimeNgayThue.Value = DateTime.Now;
         }
@@ -69,8 +119,8 @@ namespace QuanLyPhongTro
         private void btt_them_Click(object sender, EventArgs e)
         {
             string hopdong = tb_IdHopDong.Text.Trim();
-            string phong = tb_Phong.Text.Trim();
-            string nguoiThue = tb_NguoiThue.Text.Trim();
+            string phong = cb_phong.Text.Trim();
+            string nguoiThue = cb_nguoithue.Text.Trim();
             string thoiHanThue = dateTimePicker1.Value.ToString("yyyy-MM-dd");
             string ngayThue = datetimeNgayThue.Value.ToString("yyyy-MM-dd");
 
@@ -149,8 +199,8 @@ namespace QuanLyPhongTro
         private void btt_sua_Click(object sender, EventArgs e)
         {
             string idHopDong = tb_IdHopDong.Text.Trim();
-            string phong = tb_Phong.Text.Trim();
-            string nguoiThue = tb_NguoiThue.Text.Trim();
+            string phong = cb_phong.Text.Trim();
+            string nguoiThue = cb_nguoithue.Text.Trim();
             string thoiHanThue = dateTimePicker1.Value.ToString("yyyy-MM-dd");
             string ngayThue = datetimeNgayThue.Value.ToString("yyyy-MM-dd");
 
@@ -280,8 +330,8 @@ namespace QuanLyPhongTro
                 {
                     DataGridViewRow row = dgvHopDongThue.Rows[e.RowIndex];
                     tb_IdHopDong.Text = row.Cells["IdHopDong"]?.Value?.ToString() ?? "";
-                    tb_NguoiThue.Text = row.Cells["IdNguoiThue"]?.Value?.ToString() ?? "";
-                    tb_Phong.Text = row.Cells["IdPhong"]?.Value?.ToString() ?? "";
+                    cb_nguoithue.Text = row.Cells["IdNguoiThue"]?.Value?.ToString() ?? "";
+                    cb_phong.Text = row.Cells["IdPhong"]?.Value?.ToString() ?? "";
                     if (row.Cells["NgayKetThucThue"].Value != null)
                     {
                         dateTimePicker1.Value = Convert.ToDateTime(row.Cells["NgayKetThucThue"].Value);
