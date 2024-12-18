@@ -16,59 +16,15 @@ namespace QuanLyPhongTro
 {
     public partial class QuanLyHoaDon : QuanLyPhongTro.Form1
     {
-        string strCon = "Server=DESKTOP-26K2NEP;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
+        TaoXML taoXML = new TaoXML();
+        string fileXML = "\\HoaDon.xml";
 
-        public QuanLyHoaDon()
+
+        void LoadData()
         {
-            InitializeComponent();
-            this.Load += QuanLyHoaDon_Load;
-        }
-
-        // Tạo file XML từ SQL Server
-        public void taoXML(string sql, string bang, string _FileXML)
-        {
-            SqlConnection con = new SqlConnection(strCon);
-            con.Open();
-            SqlDataAdapter ad = new SqlDataAdapter(sql, con);
-            DataTable dt = new DataTable(bang);
-            ad.Fill(dt);
-            dt.WriteXml(Application.StartupPath + _FileXML, XmlWriteMode.WriteSchema);
-            con.Close();
-        }
-
-        // Load dữ liệu từ file XML vào DataGridView
-        public DataTable loadDataGridView(string _FileXML)
-        {
-            DataTable dt = new DataTable();
-            string FilePath = Application.StartupPath + _FileXML;
-            if (File.Exists(FilePath))
-            {
-                // Tạo luồng xử lý file XML
-                FileStream fsReadXML = new FileStream(FilePath, FileMode.Open);
-                // Đọc file XML vào DataTable
-                dt.ReadXml(fsReadXML);
-                fsReadXML.Close();
-            }
-            else
-            {
-                MessageBox.Show("File không tồn tại");
-            }
-            return dt;
-        }
-
-        // Khi form tải lên, thực hiện kết nối và hiển thị dữ liệu
-        private void QuanLyHoaDon_Load(object sender, EventArgs e)
-        {
-            string sql = "SELECT * FROM HoaDon";
-            string bang = "HoaDon";
-            string fileXML = "\\HoaDon.xml";
-
-            // Tạo file XML từ cơ sở dữ liệu
-            taoXML(sql, bang, fileXML);
-
-            // Load dữ liệu từ file XML vào DataGridView
-            DataTable dt = loadDataGridView(fileXML);
-            dataGridView1.DataSource = dt;
+            string sql = "select * from HoaDon";
+            taoXML.taoXML(sql, "HoaDon", fileXML);
+            dataGridView1.DataSource = taoXML.loadDataGridView(fileXML);
 
             // Đặt cột Id thành ReadOnly
             if (dataGridView1.Columns.Contains("IdHoaDon"))
@@ -82,12 +38,19 @@ namespace QuanLyPhongTro
             comboBoxPhong.DataSource = dsPhong; // ComboBox bạn đặt trên giao diện
             comboBoxPhong.DisplayMember = "TenPhong"; // Tên phòng hiển thị
             comboBoxPhong.ValueMember = "IdPhong";    // Giá trị là Id phòng
-
-            // Đăng ký sự kiện CellClick
             dataGridView1.CellClick += dataGridView1_CellContentClick;
         }
 
 
+
+
+        string strCon = "Server=DESKTOP-26K2NEP;Initial Catalog=QuanLyPhongTro;Integrated Security=True";
+
+        public QuanLyHoaDon()
+        {
+            InitializeComponent();
+            LoadData();
+        }
 
         private DataTable GetDanhSachPhong()
         {
@@ -103,7 +66,6 @@ namespace QuanLyPhongTro
             }
             return dt;
         }
-
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -124,46 +86,6 @@ namespace QuanLyPhongTro
             }
         }
 
-        public void Them(string FileXML, string xml)
-        {
-            try
-            {
-                // Kiểm tra nếu file XML tồn tại
-                if (!File.Exists(FileXML))
-                {
-                    MessageBox.Show("File XML không tồn tại.");
-                    return;
-                }
-
-                // Đọc file XML
-                XmlTextReader textReader = new XmlTextReader(FileXML);
-                XmlDocument doc = new XmlDocument();
-                doc.Load(textReader);
-                textReader.Close();
-
-                // Tạo một nút mới từ chuỗi XML truyền vào
-                XmlDocumentFragment docFrag = doc.CreateDocumentFragment();
-                docFrag.InnerXml = xml;
-
-                // Lấy nút gốc của tài liệu XML
-                XmlNode rootNode = doc.DocumentElement;
-
-                // Thêm nút mới vào cuối nút gốc
-                if (rootNode != null)
-                {
-                    rootNode.AppendChild(docFrag);
-                }
-
-                // Lưu lại file XML
-                doc.Save(FileXML);
-                MessageBox.Show("Thêm dữ liệu thành công!");
-            }
-            catch (Exception ex)
-            {
-                // Hiển thị thông báo lỗi
-                MessageBox.Show($"Lỗi khi thêm dữ liệu: {ex.Message}");
-            }
-        }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -207,10 +129,10 @@ namespace QuanLyPhongTro
                             $"<NgayKetThuc>{ngayKetThuc}</NgayKetThuc>" +
                             $"</HoaDon>";
 
-            string filePath = Application.StartupPath + "\\HoaDon.xml";
-            Them(filePath, newXml);
 
-            // Lưu vào cơ sở dữ liệu
+            taoXML.Them(Application.StartupPath + fileXML, newXml);
+
+            //Lưu vào cơ sở dữ liệu
             try
             {
                 using (SqlConnection con = new SqlConnection(strCon))
@@ -236,67 +158,7 @@ namespace QuanLyPhongTro
                 MessageBox.Show($"Lỗi khi lưu vào cơ sở dữ liệu: {ex.Message}");
             }
 
-            try
-            {
-                string sql = "SELECT * FROM HoaDon";
-                string bang = "HoaDon";
-                string fileXML = "\\HoaDon.xml";
-
-                // Tạo lại file XML từ cơ sở dữ liệu
-                taoXML(sql, bang, fileXML);
-
-                // Load dữ liệu từ file XML vào DataGridView
-                DataTable dt = loadDataGridView(fileXML);
-                dataGridView1.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi đồng bộ file XML: {ex.Message}");
-            }
-        }
-
-        public void Sua(string FileXML, string xpathCondition, string xmlContent)
-        {
-            try
-            {
-                // Kiểm tra nếu file XML tồn tại
-                if (!File.Exists(FileXML))
-                {
-                    MessageBox.Show("File XML không tồn tại.");
-                    return;
-                }
-
-                // Tải nội dung file XML
-                XmlDocument doc = new XmlDocument();
-                doc.Load(FileXML);
-
-                // Tìm nút cần sửa bằng điều kiện XPath
-                XmlNode oldNode = doc.SelectSingleNode(xpathCondition);
-
-                if (oldNode == null)
-                {
-                    MessageBox.Show("Không tìm thấy dữ liệu cần sửa trong file XML.");
-                    return;
-                }
-
-                // Tạo nút mới từ nội dung XML được cung cấp
-                XmlDocumentFragment newNode = doc.CreateDocumentFragment();
-                newNode.InnerXml = xmlContent;
-
-                // Thay thế nút cũ bằng nút mới
-                XmlNode parentNode = oldNode.ParentNode;
-                parentNode.ReplaceChild(newNode, oldNode);
-
-                // Lưu thay đổi vào file XML
-                doc.Save(FileXML);
-
-                MessageBox.Show("Cập nhật dữ liệu trong file XML thành công!");
-            }
-            catch (Exception ex)
-            {
-                // Hiển thị lỗi nếu có
-                MessageBox.Show($"Lỗi khi sửa file XML: {ex.Message}");
-            }
+            LoadData();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -331,8 +193,7 @@ namespace QuanLyPhongTro
                 <TuNgay>{ngayBatDau}</TuNgay>
                 <DenNgay>{ngayKetThuc}</DenNgay>
             </HoaDon>";
-
-                Sua(filePath, xpathCondition, newXmlContent);
+                taoXML.sua(Application.StartupPath + fileXML, xpathCondition, newXmlContent, "HoaDon");
             }
             catch (Exception ex)
             {
@@ -370,39 +231,7 @@ namespace QuanLyPhongTro
                 MessageBox.Show($"Lỗi khi sửa dữ liệu trong cơ sở dữ liệu: {ex.Message}");
             }
 
-            // Cập nhật lại DataGridView
-            string fileXML = "\\HoaDon.xml";
-            DataTable dt = loadDataGridView(fileXML);
-            dataGridView1.DataSource = dt;
-        }
-
-
-        public void xoa(string _FileXML, string xpathCondition)
-        {
-            try
-            {
-                string fileName = Application.StartupPath + _FileXML;
-                XmlDocument doc = new XmlDocument();
-                doc.Load(fileName);
-
-                // Tìm nút cần xóa
-                XmlNode nodeCu = doc.SelectSingleNode(xpathCondition);
-                if (nodeCu != null)
-                {
-                    // Xóa nút
-                    doc.DocumentElement.RemoveChild(nodeCu);
-                    doc.Save(fileName);
-                    MessageBox.Show("Xóa dữ liệu thành công từ file XML!");
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy nút cần xóa.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi xóa dữ liệu: {ex.Message}");
-            }
+            LoadData();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -416,34 +245,12 @@ namespace QuanLyPhongTro
                 return;
             }
 
-            // Xóa khỏi file XML
-            string filePath = "\\HoaDon.xml";
             string xpathCondition = $"//HoaDon[IdHoaDon='{idHoaDon}']"; // Tìm hóa đơn theo IdHoaDon
-            xoa(filePath, xpathCondition);
 
-            // Xóa khỏi cơ sở dữ liệu
-            try
-            {
-                using (SqlConnection con = new SqlConnection(strCon))
-                {
-                    con.Open();
-                    string sql = "DELETE FROM HoaDon WHERE IdHoaDon = @IdHoaDon";
-                    using (SqlCommand cmd = new SqlCommand(sql, con))
-                    {
-                        cmd.Parameters.AddWithValue("@IdHoaDon", idHoaDon);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                MessageBox.Show("Dữ liệu đã được xóa thành công từ cơ sở dữ liệu!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi xóa dữ liệu trong cơ sở dữ liệu: {ex.Message}");
-            }
-
-            // Cập nhật lại DataGridView
-            DataTable dt = loadDataGridView(filePath);
-            dataGridView1.DataSource = dt;
+            taoXML.xoa(fileXML, xpathCondition);
+            taoXML.Xoa_Database("HoaDon", "IdHoaDon", textBoxId.Text);
+         
+            LoadData();
         }
 
         private void button4_Click(object sender, EventArgs e)
